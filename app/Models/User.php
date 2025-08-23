@@ -73,4 +73,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+    public function wishlist() {
+        return $this->belongsToMany(Restaurant::class, 'wishlists');
+    }
+
 }

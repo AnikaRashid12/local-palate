@@ -48,6 +48,22 @@
                     <h3 class="text-2xl font-semibold mb-3 text-gray-800">About {{ $restaurant->name }}</h3>
                     <p>{{ $restaurant->description ?? 'No detailed description available.' }}</p>
                 </div>
+                <!-- Add to Wishlist Button -->
+                @auth
+                    <div class="text-center mb-8">
+                       <form action="{{ route('wishlist.add', $restaurant->id) }}" method="POST">
+                           @csrf
+                           <button type="submit" 
+                               class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-md transition duration-300">
+                               ❤️ Add to Wishlist
+                           </button>
+                       </form>
+                    </div>
+                @else
+                    <p class="text-center text-gray-600 mb-8">
+                        Please <a href="{{ route('login') }}" class="text-blue-500 hover:underline">log in</a> to add this restaurant to your wishlist.
+                    </p>
+                @endauth
 
                 <!-- Brief Description about Foods -->
                 <div class="mb-8 text-gray-700 leading-relaxed">
