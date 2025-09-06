@@ -142,6 +142,57 @@
                 </div>
             </div>
 
+            {{-- User Requests (NEW) --}}
+            @isset($requests)
+            <div class="bg-white shadow sm:rounded-lg p-6 mt-8">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Requests</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm">
+                        <thead>
+                            <tr class="text-left text-gray-600">
+                                <th class="py-2 pr-4">Name</th>
+                                <th class="py-2 pr-4">Location</th>
+                                <th class="py-2 pr-4">Requested By</th>
+                                <th class="py-2 pr-4">When</th>
+                                <th class="py-2 pr-4">Image</th>
+                                <th class="py-2 pr-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y">
+                            @forelse ($requests as $req)
+                                <tr>
+                                    <td class="py-2 pr-4 font-medium">{{ $req->name }}</td>
+                                    <td class="py-2 pr-4">{{ $req->location }}</td>
+                                    <td class="py-2 pr-4">{{ optional($req->user)->name ?? '—' }}</td>
+                                    <td class="py-2 pr-4">{{ optional($req->created_at)->diffForHumans() }}</td>
+                                    <td class="py-2 pr-4">
+                                        @if($req->image_path)
+                                            <a href="{{ asset($req->image_path) }}" target="_blank" class="text-pink-700 hover:underline">View</a>
+                                        @else
+                                            —
+                                        @endif
+                                    </td>
+                                    <td class="py-2 pr-4">
+                                        <form action="{{ route('admin.requests.approve', $req) }}" method="POST" class="inline">
+                                            @csrf
+                                            <button class="px-3 py-1 rounded bg-green-600 text-white text-sm hover:bg-green-700">Approve</button>
+                                        </form>
+                                        <form action="{{ route('admin.requests.reject', $req) }}" method="POST" class="inline ml-2">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="px-3 py-1 rounded bg-red-600 text-white text-sm hover:bg-red-700">Reject</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr><td colspan="6" class="py-4 text-gray-500">No requests right now.</td></tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            @endisset
+
         </div>
     </div>
 </x-app-layout>

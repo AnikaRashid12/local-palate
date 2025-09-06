@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WishlistController; // ← missing semicolon fixed
+
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\UserDashboardController;
-
-// ⬇️ NEW: add these two controllers
 use App\Http\Controllers\MyDashboardController;
 use App\Http\Controllers\AdminRestaurantController;
+use App\Http\Controllers\RestaurantRequestController; // ⬅️ NEW
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,28 +17,41 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    //'verified',
+    // 'verified',
 ])->group(function () {
-    // Dashboard (homepage after login)
+
+    // Main dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Role-aware redirect: admin -> /admin, user -> /user-dashboard
+    Route::get('/my-dashboard', MyDashboardController::class)->name('my.dashboard');
 
     // User dashboard
     Route::get('/user-dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
 
-    // ⬇️ NEW: Smart redirect—admins → /admin, users → /user-dashboard
-    Route::get('/my-dashboard', MyDashboardController::class)->name('my.dashboard');
-
-    // Restaurant detail + reviews
+    // Restaurants (detail + reviews)
     Route::get('/restaurants/{restaurant}', [RestaurantController::class, 'show'])->name('restaurants.show');
     Route::post('/restaurants/{restaurant}/reviews', [RestaurantController::class, 'storeReview'])->name('restaurants.reviews.store');
 
-    // ⭐ Wishlist routes (only logged-in users)
+    // Wishlist
     Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
     Route::post('/wishlist/add/{restaurant}', [WishlistController::class, 'add'])->name('wishlist.add');
     Route::delete('/wishlist/remove/{restaurant}', [WishlistController::class, 'remove'])->name('wishlist.remove');
 
-    // ⬇️ NEW: Admin routes (controller self-guards role=admin)
+    // ===== Restaurant Requests (User) =====
+    Route::get('/requests/create', [RestaurantRequestController::class, 'create'])->name('requests.create');
+    Route::post('/requests',        [RestaurantRequestController::class, 'store'])->name('requests.store');
+
+    // ===== Admin Console =====
     Route::get('/admin', [AdminRestaurantController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/restaurants', [AdminRestaurantController::class, 'store'])->name('admin.restaurants.store');
-    Route::patch('/admin/restaurants/{restaurant}/status', [AdminRestaurantController::class, 'toggleStatus'])->name('admin.restaurants.toggleStatus');
+    Route::patch('/admin/restaurants/{restaurant}/status', [AdminRestaurantController::class, 'toggleStatus'])
+        ->name('admin.restaurants.toggleStatus');
+
+    // Requests: approve / reject (admin)
+    // Use {restaurantRequest} so implicit model binding targets App\Models\RestaurantRequest
+    Route::post('/admin/requests/{restaurantRequest}/approve', [AdminRestaurantController::class, 'approveRequest'])
+        ->name('admin.requests.approve');
+    Route::delete('/admin/requests/{restaurantRequest}', [AdminRestaurantController::class, 'rejectRequest'])
+        ->name('admin.requests.reject');
 });

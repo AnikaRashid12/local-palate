@@ -7,11 +7,27 @@
 
     <div class="py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-        {{-- Go to Main Dashboard --}}
-        <a href="{{ route('dashboard') }}" 
-           class="px-4 py-2 bg-pink-500 text-red rounded hover:bg-pink-600 mb-6 inline-block">
-           Go to Dashboard
-        </a>
+        {{-- Success toast (after submitting a request) --}}
+        @if(session('success'))
+            <div class="mb-4 px-4 py-3 rounded bg-pink-50 text-pink-900 border border-pink-200">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        {{-- Top actions --}}
+        <div class="mb-6 space-x-2">
+            {{-- Go to Main Dashboard --}}
+            <a href="{{ route('dashboard') }}" 
+               class="px-4 py-2 bg-pink-500 text-red rounded hover:bg-pink-600 inline-block">
+               Go to Dashboard
+            </a>
+
+            {{-- ➕ Add Request (new) --}}
+            <a href="{{ route('requests.create') }}"
+               class="px-4 py-2 bg-pink-600 text-white rounded hover:bg-pink-700 inline-block">
+               ➕ Add Request
+            </a>
+        </div>
 
         {{-- Wishlist --}}
         <div class="bg-white shadow rounded-lg p-6 mb-6">
