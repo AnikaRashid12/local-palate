@@ -1,4 +1,15 @@
-<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {{ $attributes }}>
-  <path d="M11.395 44.428C4.557 40.198 0 32.632 0 24 0 10.745 10.745 0 24 0a23.891 23.891 0 0113.997 4.502c-.2 17.907-11.097 33.245-26.602 39.926z" fill="#6875F5"/>
-  <path d="M14.134 45.885A23.914 23.914 0 0024 48c13.255 0 24-10.745 24-24 0-3.516-.756-6.856-2.115-9.866-4.659 15.143-16.608 27.092-31.75 31.751z" fill="#6875F5"/>
+@props(['class' => 'h-10 w-10'])
+
+<svg {{ $attributes->merge(['class' => $class]) }} viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Local Palate">
+  <!-- Bowl rim -->
+  <ellipse cx="64" cy="58" rx="46" ry="10" fill="#ffd1dc"/>
+  <!-- Bowl body -->
+  <path d="M16 58c0 24 20 44 48 44s48-20 48-44H16z" fill="#ffffff" />
+  <path d="M16 58c0 24 20 44 48 44s48-20 48-44" fill="none" stroke="#ec4899" stroke-width="6" stroke-linecap="round"/>
+  <!-- Steam -->
+  <path d="M48 32c-4 6 6 8 2 14M66 28c-4 6 6 8 2 14M82 34c-4 6 6 8 2 14"
+        stroke="#ec4899" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- Chopsticks -->
+  <path d="M92 20L40 50" stroke="#1f2937" stroke-width="5" stroke-linecap="round"/>
+  <path d="M98 24L46 54" stroke="#1f2937" stroke-width="5" stroke-linecap="round"/>
 </svg>

@@ -14,7 +14,6 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        
         $reviews = $restaurant->reviews()->latest()->get(); 
 
         return view('restaurants.show', compact('restaurant', 'reviews'));
@@ -32,21 +31,65 @@ class RestaurantController extends Controller
     {
         //dd('Store review method hit!', $request->all());
         $request->validate([
-            'rating' => ['required', 'integer', 'min:1', 'max:5'],
+            'rating'  => ['required', 'integer', 'min:1', 'max:5'],
             'comment' => ['nullable', 'string', 'max:1000'],
         ]);
 
-        //  Create a new review
-        // IMPORTANT: This assumes you have a 'Review' model and 'reviews' table
-        // and that the 'reviews' table has 'user_id', 'restaurant_id', 'rating', 'comment' columns.
         $review = new Review();
-        $review->user_id = auth()->id(); // Get the ID of the currently logged-in user
+        $review->user_id = auth()->id(); // logged-in user
         $review->restaurant_id = $restaurant->id;
         $review->rating = $request->rating;
         $review->comment = $request->comment;
         $review->save();
 
-        //  Redirect back to the restaurant page with a success message
         return back()->with('success', 'Your review has been submitted!');
+    }
+
+    /**
+     * Create/store a restaurant (adds support for `description`)
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name'           => ['required','string','max:255'],
+            'location'       => ['nullable','string','max:255'],
+            'image'          => ['nullable','string','max:255'],
+            'food_menu'      => ['nullable','string'],
+            'service_review' => ['nullable','string'],
+            'average_rating' => ['nullable','numeric','between:0,5'],
+            'description'    => ['nullable','string','max:255'], // ← new short blurb
+        ]);
+
+        Restaurant::create($validated);
+
+        // Use your preferred redirect (index/show). Back is safest if routes vary.
+        return back()->with('success', 'Restaurant created.');
+    }
+
+    /**
+     * Update an existing restaurant (supports `description`)
+     *
+     * @param  \Illuminate\Http\Request   $request
+     * @param  \App\Models\Restaurant     $restaurant
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, Restaurant $restaurant)
+    {
+        $validated = $request->validate([
+            'name'           => ['required','string','max:255'],
+            'location'       => ['nullable','string','max:255'],
+            'image'          => ['nullable','string','max:255'],
+            'food_menu'      => ['nullable','string'],
+            'service_review' => ['nullable','string'],
+            'average_rating' => ['nullable','numeric','between:0,5'],
+            'description'    => ['nullable','string','max:255'], // ← new short blurb
+        ]);
+
+        $restaurant->update($validated);
+
+        return back()->with('success', 'Restaurant updated.');
     }
 }

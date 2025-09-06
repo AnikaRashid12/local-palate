@@ -8,6 +8,7 @@ class RegisterResponse implements RegisterResponseContract
 {
     public function toResponse($request)
     {
-        return redirect('dashboard'); // or '/'
+        // Always go to the main dashboard after registration
+        return redirect()->to(route('dashboard'));
     }
 }

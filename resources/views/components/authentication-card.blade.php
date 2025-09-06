@@ -1,9 +1,10 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-    <div>
-        {{ $logo }}
-    </div>
+<div class="mx-auto text-center">
+  <div class="flex justify-center mb-6">
+    <x-authentication-card-logo class="h-20 w-20" />
+  </div>
 
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-        {{ $slot }}
-    </div>
+  {{-- Soft pink glassy panel instead of solid white --}}
+  <div {{ $attributes->merge(['class' => 'bg-pink-200/40 backdrop-blur-md shadow-lg rounded-2xl p-8']) }}>
+    {{ $slot }}
+  </div>
 </div>

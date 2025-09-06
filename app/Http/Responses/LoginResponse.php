@@ -8,6 +8,7 @@ class LoginResponse implements LoginResponseContract
 {
     public function toResponse($request)
     {
-        return redirect()->intended('/dashboard'); // or '/' if you want the homepage
+        // Always go to the main dashboard after login
+        return redirect()->to(route('dashboard'));
     }
 }
