@@ -2,56 +2,62 @@
 
 ### Discover. Review. Save Your Favorites.
 
-Local Palate is a restaurant discovery and review web application built with Laravel. It allows users to explore restaurants, discover popular dining spots, filter restaurants based on food preferences and location, share their dining experiences, and save their favorite restaurants to a personal wishlist.
+Local Palate is a Laravel-based restaurant discovery and review platform that helps users explore restaurants, discover trending dining spots, share their experiences, and save their favorite places.
 
-The platform includes separate dashboards for users and administrators, making restaurant discovery and management easier and more organized.
+Users can search for restaurants, filter them by cuisine, location, and ratings, explore detailed restaurant profiles, and contribute reviews. The platform also features role-based authentication with separate dashboards for administrators and regular users.
 
-## ✨ Key Features
+## ✨ Features
 
-### 🏠 Homepage
-- Displays highly rated restaurants based on customer reviews.
-- Browse restaurants with their pictures and names.
-- Add restaurants to your wishlist using the heart icon.
-- Explore restaurants available on the platform.
+### 🏠 Homepage & Restaurant Discovery
+- Displays restaurants with the highest ratings and popular reviews.
+- Highlights trending restaurants with a **Trending** badge.
+- Browse restaurants through visual cards featuring restaurant pictures, names, food categories, and locations.
+- Add restaurants to your wishlist directly from the homepage.
+- Search for restaurants by name.
 
-### 🔎 Search & Filter
-- Search restaurants by name.
-- Filter restaurants by food category, including seafood, pizza, sushi, and more.
-- Filter restaurants based on location.
-- Discover restaurants that match your preferences.
+### 🔍 Advanced Restaurant Filtering
+Users can discover restaurants using multiple filtering options:
+- **By Location:** Find restaurants based on their location.
+- **By Cuisine:** Filter by food categories such as seafood, pizza, sushi, pasta, and more.
+- **By Rating:** Sort restaurants by rating, from highest to lowest or lowest to highest.
+- Apply or reset filters to customize restaurant results.
 
 ### ⭐ Restaurant Details & Reviews
-- Dedicated page for each restaurant.
-- View restaurant descriptions and information.
-- Explore customer reviews and star ratings.
-- Submit reviews and rate restaurants.
-- Add or remove restaurants from your wishlist.
+Every restaurant has its own dedicated page featuring:
+- Restaurant description and information.
+- Food menu and cuisine details.
+- Customer reviews and star ratings.
+- Average restaurant rating.
+- Review submission form with selectable star ratings and written feedback.
+- Wishlist functionality through a heart icon.
 
 ### ❤️ Wishlist Management
-- Save favorite restaurants using the heart icon.
-- Wishlist functionality is available on both the homepage and restaurant detail pages.
-- View all saved restaurants from the user dashboard.
+- Add or remove restaurants using the heart icon.
+- Wishlist functionality is available on both the homepage and individual restaurant pages.
+- A dedicated **My Wishlist** page displays saved restaurants.
+- Users can manage and revisit their favorite restaurants.
 
 ### 👤 User & Admin Dashboards
 
-The application supports two account roles with different dashboard functionalities.
+The application supports two types of accounts with role-based access and separate dashboard experiences.
 
-**1. User Dashboard**
+#### 1. User Dashboard
 - View wishlisted restaurants.
-- View previously submitted reviews.
-- Request the addition of new restaurants.
-- Explore the top 3 reviews.
+- Access previously submitted reviews.
+- Submit requests to add new restaurants.
+- View the **Top 3 Rated Restaurants** with their average ratings.
+- Navigate back to the main restaurant discovery page.
 
-**2. Admin Dashboard**
+#### 2. Admin Dashboard
 - View restaurant addition requests submitted by users.
 - Review customer requests.
 - Dynamically add new restaurants to the platform.
 - Manage restaurant listings.
 
 ### 📝 Restaurant Addition Requests
-- Users can request restaurants that are not yet listed on the platform.
-- Administrators can view submitted requests.
-- Admins can add requested restaurants dynamically.
+- Users can request restaurants that are not currently available on the platform.
+- Administrators can view and review submitted requests.
+- Admins can dynamically add new restaurants to the website.
 
 ## 🛠️ Tech Stack
 
@@ -62,21 +68,19 @@ The application supports two account roles with different dashboard functionalit
 | MySQL | Database |
 | HTML & CSS | Frontend structure and styling |
 | JavaScript | Frontend interactions |
-| Blade | Laravel templating |
-| Livewire | Dynamic frontend components |
+| Blade | Templating engine |
 | Laravel Jetstream | Authentication and user management |
+| Livewire | Dynamic frontend components |
 | Vite | Frontend asset development |
 
 ## ⚙️ Installation & Setup
-
-Follow these steps to run Local Palate on your local machine.
 
 ### Prerequisites
 - PHP 8.2 or higher
 - Composer
 - Node.js and NPM
 - MySQL
-- XAMPP (optional, for local MySQL and PHP environment)
+- XAMPP (optional)
 
 ### 1. Clone the Repository
 
@@ -84,7 +88,7 @@ Follow these steps to run Local Palate on your local machine.
 git clone https://github.com/AnikaRashid12/local-palate.git
 ```
 
-### 2. Navigate to the Project Folder
+### 2. Navigate to the Project Directory
 
 ```bash
 cd local-palate
@@ -92,15 +96,8 @@ cd local-palate
 
 ### 3. Install Dependencies
 
-Install PHP dependencies:
-
 ```bash
 composer install
-```
-
-Install frontend dependencies:
-
-```bash
 npm install
 ```
 
@@ -122,7 +119,7 @@ php artisan key:generate
 
 Create a MySQL database named `local_palate_db`.
 
-Update your `.env` file with your database credentials:
+Update your `.env` file:
 
 ```env
 DB_CONNECTION=mysql
@@ -141,13 +138,13 @@ php artisan migrate
 
 ### 7. Start the Application
 
-Run the Laravel development server:
+Start the Laravel development server:
 
 ```bash
 php artisan serve
 ```
 
-In another terminal, start the frontend development server:
+In another terminal, run the frontend development server:
 
 ```bash
 npm run dev
@@ -158,19 +155,33 @@ Open the application in your browser:
 **http://127.0.0.1:8000**
 
 ## 🎯 Project Objectives
+- Simplify restaurant discovery through search and filtering.
+- Help users make informed dining decisions through customer reviews and ratings.
+- Create a community-driven platform for sharing dining experiences.
+- Allow users to save and organize their favorite restaurants.
+- Provide administrators with an efficient restaurant management system.
 
-- Build a centralized platform for discovering and reviewing restaurants.
-- Help users find restaurants based on food preferences and location.
-- Encourage customers to share their dining experiences.
-- Make restaurant selection easier through ratings and reviews.
-- Allow users to organize their favorite restaurants.
-- Provide administrators with tools to manage restaurant listings and user requests.
-
-## 🔮 Future Enhancements
+## 🚀 Future Enhancements
 - Interactive maps for restaurant discovery.
-- Upload images with customer reviews.
+- Customer review image uploads.
 - Advanced restaurant recommendation system.
 - More detailed restaurant analytics.
+
+---
+
+**Local Palate** – Discover restaurants, share experiences, and find your next favorite place! 🍕
+
+<img width="1847" height="897" alt="image" src="https://github.com/user-attachments/assets/05f06438-55da-4112-85f4-6fb4d612f230" />
+
+<img width="1816" height="903" alt="image" src="https://github.com/user-attachments/assets/fbf12aa6-7dcb-4d6a-a4fa-cc4254f59d45" />
+
+<img width="973" height="928" alt="image" src="https://github.com/user-attachments/assets/82fa9423-60ea-44ed-85dd-0011431cdcef" />
+
+<img width="1237" height="907" alt="image" src="https://github.com/user-attachments/assets/d65bbf00-b9a6-4a31-b9c3-67ec7cb3fc4c" />
+
+<img width="1712" height="902" alt="image" src="https://github.com/user-attachments/assets/60ccd7c2-2080-4170-a172-c4a1394ee081" />
+
+<img width="1686" height="850" alt="image" src="https://github.com/user-attachments/assets/0ecc816d-befd-442e-820c-862e37b29ad1" />
 
 ---
 
