@@ -1,61 +1,179 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🍽️ Local Palate
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Discover. Review. Save Your Favorites.
 
-## About Laravel
+Local Palate is a restaurant discovery and review web application built with Laravel. It allows users to explore restaurants, discover popular dining spots, filter restaurants based on food preferences and location, share their dining experiences, and save their favorite restaurants to a personal wishlist.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The platform includes separate dashboards for users and administrators, making restaurant discovery and management easier and more organized.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🏠 Homepage
+- Displays highly rated restaurants based on customer reviews.
+- Browse restaurants with their pictures and names.
+- Add restaurants to your wishlist using the heart icon.
+- Explore restaurants available on the platform.
 
-## Learning Laravel
+### 🔎 Search & Filter
+- Search restaurants by name.
+- Filter restaurants by food category, including seafood, pizza, sushi, and more.
+- Filter restaurants based on location.
+- Discover restaurants that match your preferences.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### ⭐ Restaurant Details & Reviews
+- Dedicated page for each restaurant.
+- View restaurant descriptions and information.
+- Explore customer reviews and star ratings.
+- Submit reviews and rate restaurants.
+- Add or remove restaurants from your wishlist.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### ❤️ Wishlist Management
+- Save favorite restaurants using the heart icon.
+- Wishlist functionality is available on both the homepage and restaurant detail pages.
+- View all saved restaurants from the user dashboard.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👤 User & Admin Dashboards
 
-## Laravel Sponsors
+The application supports two account roles with different dashboard functionalities.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**1. User Dashboard**
+- View wishlisted restaurants.
+- View previously submitted reviews.
+- Request the addition of new restaurants.
+- Explore the top 3 reviews.
 
-### Premium Partners
+**2. Admin Dashboard**
+- View restaurant addition requests submitted by users.
+- Review customer requests.
+- Dynamically add new restaurants to the platform.
+- Manage restaurant listings.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 📝 Restaurant Addition Requests
+- Users can request restaurants that are not yet listed on the platform.
+- Administrators can view submitted requests.
+- Admins can add requested restaurants dynamically.
 
-## Contributing
+## 🛠️ Tech Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Technology | Purpose |
+|---|---|
+| Laravel 12 | Backend framework |
+| PHP 8.2+ | Server-side programming |
+| MySQL | Database |
+| HTML & CSS | Frontend structure and styling |
+| JavaScript | Frontend interactions |
+| Blade | Laravel templating |
+| Livewire | Dynamic frontend components |
+| Laravel Jetstream | Authentication and user management |
+| Vite | Frontend asset development |
 
-## Code of Conduct
+## ⚙️ Installation & Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Follow these steps to run Local Palate on your local machine.
 
-## Security Vulnerabilities
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js and NPM
+- MySQL
+- XAMPP (optional, for local MySQL and PHP environment)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 1. Clone the Repository
 
-## License
+```bash
+git clone https://github.com/AnikaRashid12/local-palate.git
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 2. Navigate to the Project Folder
+
+```bash
+cd local-palate
+```
+
+### 3. Install Dependencies
+
+Install PHP dependencies:
+
+```bash
+composer install
+```
+
+Install frontend dependencies:
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create your environment file:
+
+```bash
+cp .env.example .env
+```
+
+Generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+### 5. Configure the Database
+
+Create a MySQL database named `local_palate_db`.
+
+Update your `.env` file with your database credentials:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=local_palate_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 6. Run Database Migrations
+
+```bash
+php artisan migrate
+```
+
+### 7. Start the Application
+
+Run the Laravel development server:
+
+```bash
+php artisan serve
+```
+
+In another terminal, start the frontend development server:
+
+```bash
+npm run dev
+```
+
+Open the application in your browser:
+
+**http://127.0.0.1:8000**
+
+## 🎯 Project Objectives
+
+- Build a centralized platform for discovering and reviewing restaurants.
+- Help users find restaurants based on food preferences and location.
+- Encourage customers to share their dining experiences.
+- Make restaurant selection easier through ratings and reviews.
+- Allow users to organize their favorite restaurants.
+- Provide administrators with tools to manage restaurant listings and user requests.
+
+## 🔮 Future Enhancements
+- Interactive maps for restaurant discovery.
+- Upload images with customer reviews.
+- Advanced restaurant recommendation system.
+- More detailed restaurant analytics.
+
+---
+
+**Developed as a Laravel Web Application Project.**
+
+*Local Palate – Your next favorite restaurant is just a review away!* 🍕
